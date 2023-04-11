@@ -183,4 +183,34 @@ public class RadioTest {
         int actual = radio.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
     }
+
+    @Test
+    public void volumeUnder() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(0);
+        radio.increaseVolume();
+        int expected = 1;
+        int actual = radio.getCurrentVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void volumeAboveImpossible() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(101);
+        radio.increaseVolume();
+        int expected = 1;
+        int actual = radio.getCurrentVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void volumeUnderImpossible() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(-1);
+        radio.increaseVolume();
+        int expected = 1;
+        int actual = radio.getCurrentVolume();
+        Assertions.assertEquals(expected, actual);
+    }
 }
